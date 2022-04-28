@@ -59,10 +59,11 @@ class ProthomAloScrapper:
         try:
             while temp_iter > 0:
                 self.scroll_to_element(self.driver, load_button)
-                if not ad_banner_removed:
-                    print("Trying to remove ad banner...")
-                    time.sleep(3)
-                    ad_banner_removed = self.remove_ad_banner()
+                if ad_banner_removed: # Clean Code Principle for Better Code readability.
+                    return
+                print("Trying to remove ad banner...")
+                time.sleep(3)
+                ad_banner_removed = self.remove_ad_banner()
 
                 load_button.click()
                 temp_iter -= 1
